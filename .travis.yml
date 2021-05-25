@@ -6,7 +6,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t xinyi/docker-react -f Dockerfile.dev .
+  - docker build -t xinyi/docker-react -f Dockerfile .
 
 script:
   - docker run -e CI=true xinyi/docker-react
@@ -20,6 +20,5 @@ deploy:
   bucket_path: "test"
   on:
     branch: master
-  access_key_id: $access_key_id
-  secret_access_key:
-    secure: $secret_access_key
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
